@@ -1,0 +1,19 @@
+
+# File: AZ-Login-HyphenTest
+
+on: [workflow_dispatch]
+
+name: AzureLoginSample
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: AjayKaleMS/login@TestIssueHyphen
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - run: |
+        az webapp list --query "[?state=='Running']"
